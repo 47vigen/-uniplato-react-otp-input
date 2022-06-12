@@ -1,7 +1,7 @@
 {
   "name": "@uniplato/otp-input",
   "version": "2.4.0",
-  "description": "A fully customizable, one-time password input component for the web built with React",
+  "description": "A fully customizable, one-time password input component for the web built with React, forked",
   "main": "lib/index.js",
   "scripts": {
     "dev": "concurrently \"npm run build:watch\" \"npm run demo:dev\"",
