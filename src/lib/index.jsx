@@ -76,37 +76,40 @@ class SingleOtpInput extends PureComponent {
       value,
       className,
       isInputSecure,
+      renderInput,
       ...rest
     } = this.props;
 
+    const _props = {
+      'aria-label': `${index === 0 ? 'Please enter verification code. ' : ''}${isInputNum ? 'Digit' : 'Character'} ${
+        index + 1
+      }`,
+      autoComplete: 'off',
+      style: Object.assign(
+        { width: '1em', textAlign: 'center' },
+        isStyleObject(inputStyle) && inputStyle,
+        focus && isStyleObject(focusStyle) && focusStyle,
+        isDisabled && isStyleObject(disabledStyle) && disabledStyle,
+        hasErrored && isStyleObject(errorStyle) && errorStyle
+      ),
+      placeholder,
+      className: this.getClasses(
+        inputStyle,
+        focus && focusStyle,
+        isDisabled && disabledStyle,
+        hasErrored && errorStyle
+      ),
+      type: this.getType(),
+      maxLength: '1',
+      ref: this.input,
+      disabled: isDisabled,
+      value: value ? value : '',
+      ...rest,
+    };
+
     return (
       <div className={className} style={{ display: 'flex', alignItems: 'center' }}>
-        <input
-          aria-label={`${index === 0 ? 'Please enter verification code. ' : ''}${isInputNum ? 'Digit' : 'Character'} ${
-            index + 1
-          }`}
-          autoComplete="off"
-          style={Object.assign(
-            { width: '1em', textAlign: 'center' },
-            isStyleObject(inputStyle) && inputStyle,
-            focus && isStyleObject(focusStyle) && focusStyle,
-            isDisabled && isStyleObject(disabledStyle) && disabledStyle,
-            hasErrored && isStyleObject(errorStyle) && errorStyle
-          )}
-          placeholder={placeholder}
-          className={this.getClasses(
-            inputStyle,
-            focus && focusStyle,
-            isDisabled && disabledStyle,
-            hasErrored && errorStyle
-          )}
-          type={this.getType()}
-          maxLength="1"
-          ref={this.input}
-          disabled={isDisabled}
-          value={value ? value : ''}
-          {...rest}
-        />
+        {renderInput ? renderInput(_props, { index, focus, isDisabled, hasErrored }) : <input {..._props} />}
         {!isLastChild && separator}
       </div>
     );
@@ -282,6 +285,7 @@ class OtpInput extends Component {
       isInputNum,
       isInputSecure,
       className,
+      renderInput,
     } = this.props;
 
     const inputs = [];
@@ -319,6 +323,7 @@ class OtpInput extends Component {
           isInputNum={isInputNum}
           isInputSecure={isInputSecure}
           className={className}
+          renderInput={renderInput}
           data-cy={dataCy && `${dataCy}-${i}`}
           data-testid={dataTestId && `${dataTestId}-${i}`}
         />
