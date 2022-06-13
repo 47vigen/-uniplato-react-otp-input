@@ -95,27 +95,29 @@ class SingleOtpInput extends PureComponent {
       ].join(''),
     };
 
-    return renderInput ? (
-      renderInput(_props, { index, focus, isDisabled, hasErrored })
-    ) : (
-      <div className={className} style={{ display: 'flex', alignItems: 'center' }}>
-        <input
-          style={Object.assign(
-            { width: '1em', textAlign: 'center' },
-            isStyleObject(inputStyle) && inputStyle,
-            focus && isStyleObject(focusStyle) && focusStyle,
-            isDisabled && isStyleObject(disabledStyle) && disabledStyle,
-            hasErrored && isStyleObject(errorStyle) && errorStyle
-          )}
-          className={this.getClasses(
-            inputStyle,
-            focus && focusStyle,
-            isDisabled && disabledStyle,
-            hasErrored && errorStyle
-          )}
-          {..._props}
-          {...rest}
-        />
+    return (
+      <div className={className}>
+        {renderInput ? (
+          renderInput(_props, { index, focus, isDisabled, hasErrored })
+        ) : (
+          <input
+            style={Object.assign(
+              { width: '1em', textAlign: 'center' },
+              isStyleObject(inputStyle) && inputStyle,
+              focus && isStyleObject(focusStyle) && focusStyle,
+              isDisabled && isStyleObject(disabledStyle) && disabledStyle,
+              hasErrored && isStyleObject(errorStyle) && errorStyle
+            )}
+            className={this.getClasses(
+              inputStyle,
+              focus && focusStyle,
+              isDisabled && disabledStyle,
+              hasErrored && errorStyle
+            )}
+            {..._props}
+            {...rest}
+          />
+        )}
         {!isLastChild && separator}
       </div>
     );
@@ -344,7 +346,7 @@ class OtpInput extends Component {
 
     return (
       <div
-        style={Object.assign({ display: 'flex' }, isStyleObject(containerStyle) && containerStyle)}
+        style={isStyleObject(containerStyle) && containerStyle}
         className={!isStyleObject(containerStyle) ? containerStyle : ''}
       >
         {this.renderInputs()}
