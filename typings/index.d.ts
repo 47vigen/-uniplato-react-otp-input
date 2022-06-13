@@ -50,7 +50,7 @@ interface OtpInputProps {
         React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
         'placeholder' | 'maxLength' | 'autoComplete' | 'type' | 'disabled' | 'value'
       >
-    > & { ref: React.Ref<HTMLInputElement> },
+    > & { ref: React.RefObject<HTMLInputElement> },
     state: { index: number; focus: boolean; isDisabled: boolean; hasErrored: boolean }
   ) => React.ReactNode;
 }
