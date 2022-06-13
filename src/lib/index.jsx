@@ -346,8 +346,8 @@ class OtpInput extends Component {
 
     return (
       <div
-        style={isStyleObject(containerStyle) && containerStyle}
         className={!isStyleObject(containerStyle) ? containerStyle : ''}
+        style={isStyleObject(containerStyle) ? containerStyle : undefined}
       >
         {this.renderInputs()}
       </div>
