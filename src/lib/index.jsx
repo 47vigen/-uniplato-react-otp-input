@@ -93,6 +93,7 @@ class SingleOtpInput extends PureComponent {
         isInputNum ? 'Digit ' : 'Character ',
         index + 1,
       ].join(''),
+      ...rest,
     };
 
     return (
@@ -115,7 +116,6 @@ class SingleOtpInput extends PureComponent {
               hasErrored && errorStyle
             )}
             {..._props}
-            {...rest}
           />
         )}
         {!isLastChild && separator}

@@ -48,9 +48,24 @@ interface OtpInputProps {
     props: Required<
       Pick<
         React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
-        'placeholder' | 'maxLength' | 'autoComplete' | 'type' | 'disabled' | 'value'
+        | 'placeholder'
+        | 'maxLength'
+        | 'autoComplete'
+        | 'type'
+        | 'disabled'
+        | 'value'
+        | 'onChange'
+        | 'onKeyDown'
+        | 'onInput'
+        | 'onPaste'
+        | 'onFocus'
+        | 'onBlur'
       >
-    > & { ref: React.RefObject<HTMLInputElement> },
+    > & {
+      ref: React.RefObject<HTMLInputElement>;
+      'data-cy'?: string;
+      'data-testid'?: string;
+    },
     state: { index: number; focus: boolean; isDisabled: boolean; hasErrored: boolean }
   ) => React.ReactNode;
 }
