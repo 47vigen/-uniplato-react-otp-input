@@ -45,10 +45,12 @@ interface OtpInputProps {
   'data-testid'?: string;
   'data-cy'?: string;
   renderInput?: (
-    props: Pick<
-      React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
-      'placeholder' | 'maxLength' | 'ref' | 'autoComplete' | 'type' | 'disabled' | 'value'
-    >,
+    props: Required<
+      Pick<
+        React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
+        'placeholder' | 'maxLength' | 'autoComplete' | 'type' | 'disabled' | 'value'
+      >
+    > & { ref: React.Ref<HTMLInputElement> },
     state: { index: number; focus: boolean; isDisabled: boolean; hasErrored: boolean }
   ) => React.ReactNode;
 }
