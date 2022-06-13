@@ -95,29 +95,27 @@ class SingleOtpInput extends PureComponent {
       ].join(''),
     };
 
-    return (
+    return renderInput ? (
+      renderInput(_props, { index, focus, isDisabled, hasErrored })
+    ) : (
       <div className={className} style={{ display: 'flex', alignItems: 'center' }}>
-        {renderInput ? (
-          renderInput(_props, { index, focus, isDisabled, hasErrored })
-        ) : (
-          <input
-            style={Object.assign(
-              { width: '1em', textAlign: 'center' },
-              isStyleObject(inputStyle) && inputStyle,
-              focus && isStyleObject(focusStyle) && focusStyle,
-              isDisabled && isStyleObject(disabledStyle) && disabledStyle,
-              hasErrored && isStyleObject(errorStyle) && errorStyle
-            )}
-            className={this.getClasses(
-              inputStyle,
-              focus && focusStyle,
-              isDisabled && disabledStyle,
-              hasErrored && errorStyle
-            )}
-            {..._props}
-            {...rest}
-          />
-        )}
+        <input
+          style={Object.assign(
+            { width: '1em', textAlign: 'center' },
+            isStyleObject(inputStyle) && inputStyle,
+            focus && isStyleObject(focusStyle) && focusStyle,
+            isDisabled && isStyleObject(disabledStyle) && disabledStyle,
+            hasErrored && isStyleObject(errorStyle) && errorStyle
+          )}
+          className={this.getClasses(
+            inputStyle,
+            focus && focusStyle,
+            isDisabled && disabledStyle,
+            hasErrored && errorStyle
+          )}
+          {..._props}
+          {...rest}
+        />
         {!isLastChild && separator}
       </div>
     );
