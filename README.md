@@ -13,6 +13,12 @@ A fully customizable, one-time password input component for the web built with R
 
 [CodeSandbox](https://codesandbox.io/s/react-otp-input-demo-v2-1iy52)
 
+## This package is forked!
+[See original source here](https://github.com/devfolioco/react-otp-input)
+
+#### Why?
+this package has a major feature in the name of "renderInput" for using fully customized inputs!
+
 ## Installation
 
 [![NPM](https://nodei.co/npm/react-otp-input.png?compact=true)](https://nodei.co/npm/react-otp-input/)
