@@ -1,6 +1,6 @@
 {
   "name": "@uniplato/otp-input",
-  "version": "2.4.5",
+  "version": "2.4.6",
   "description": "A fully customizable, one-time password input component for the web built with React.",
   "main": "lib/index.js",
   "scripts": {
