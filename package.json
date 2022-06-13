@@ -9,7 +9,7 @@
     "build:watch": "babel src/lib -w -d lib",
     "demo:dev": "webpack-dev-server --mode development",
     "demo:build": "webpack --mode production",
-    "format": "prettier --write \"**/*.{html,css,js,jsx}\"",
+    "format": "prettier --write \"**/*.{html,css,js,jsx,ts}\"",
     "lint": "eslint 'src/**/*.{js,jsx}' --quiet",
     "lint:fix": "eslint 'src/**/*.{js,jsx}' --fix",
     "prepublish": "npm run build",
