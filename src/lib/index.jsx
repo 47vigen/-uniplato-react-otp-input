@@ -81,35 +81,43 @@ class SingleOtpInput extends PureComponent {
     } = this.props;
 
     const _props = {
-      'aria-label': `${index === 0 ? 'Please enter verification code. ' : ''}${isInputNum ? 'Digit' : 'Character'} ${
-        index + 1
-      }`,
-      autoComplete: 'off',
-      style: Object.assign(
-        { width: '1em', textAlign: 'center' },
-        isStyleObject(inputStyle) && inputStyle,
-        focus && isStyleObject(focusStyle) && focusStyle,
-        isDisabled && isStyleObject(disabledStyle) && disabledStyle,
-        hasErrored && isStyleObject(errorStyle) && errorStyle
-      ),
       placeholder,
-      className: this.getClasses(
-        inputStyle,
-        focus && focusStyle,
-        isDisabled && disabledStyle,
-        hasErrored && errorStyle
-      ),
-      type: this.getType(),
       maxLength: '1',
       ref: this.input,
+      autoComplete: 'off',
+      type: this.getType(),
       disabled: isDisabled,
       value: value ? value : '',
-      ...rest,
+      'aria-label': [
+        index === 0 ? 'Please enter verification code. ' : '',
+        isInputNum ? 'Digit ' : 'Character ',
+        index + 1,
+      ].join(''),
     };
 
     return (
       <div className={className} style={{ display: 'flex', alignItems: 'center' }}>
-        {renderInput ? renderInput(_props, { index, focus, isDisabled, hasErrored }) : <input {..._props} />}
+        {renderInput ? (
+          renderInput(_props, { index, focus, isDisabled, hasErrored })
+        ) : (
+          <input
+            style={Object.assign(
+              { width: '1em', textAlign: 'center' },
+              isStyleObject(inputStyle) && inputStyle,
+              focus && isStyleObject(focusStyle) && focusStyle,
+              isDisabled && isStyleObject(disabledStyle) && disabledStyle,
+              hasErrored && isStyleObject(errorStyle) && errorStyle
+            )}
+            className={this.getClasses(
+              inputStyle,
+              focus && focusStyle,
+              isDisabled && disabledStyle,
+              hasErrored && errorStyle
+            )}
+            {..._props}
+            {...rest}
+          />
+        )}
         {!isLastChild && separator}
       </div>
     );

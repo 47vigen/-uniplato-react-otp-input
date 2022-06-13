@@ -44,8 +44,13 @@ interface OtpInputProps {
   value?: string;
   'data-testid'?: string;
   'data-cy'?: string;
-  renderInput?: (props: React.InputHTMLAttributes<HTMLInputElement>,
-    state: { index: number, focus: boolean, isDisabled: boolean, hasErrored: boolean }) => React.ReactNode;
+  renderInput?: (
+    props: Pick<
+      React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
+      'placeholder' | 'maxLength' | 'ref' | 'autoComplete' | 'type' | 'disabled' | 'value'
+    >,
+    state: { index: number; focus: boolean; isDisabled: boolean; hasErrored: boolean }
+  ) => React.ReactNode;
 }
 
 interface OtpInputState {
